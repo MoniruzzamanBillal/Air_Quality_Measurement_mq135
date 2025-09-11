@@ -6,7 +6,10 @@
 #define DHTPIN 2
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
+
+
 int mq135Pin = A0;
+
 
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -44,8 +47,10 @@ void loop() {
   String airStatus;
   if (mq135Value < 200) {
     airStatus = "GOOD Air";
+
   } else if (mq135Value >= 200 && mq135Value < 400) {
     airStatus = "MODERATE Air";
+
   } else {
     airStatus = "POOR Air!";
   }
@@ -95,7 +100,7 @@ void loop() {
   } else if (temperature < 15) {
     lcd.print("Status: COLD");
   } else if (humidity > 70) {
-    lcd.print("Humid!");
+    lcd.print("Status: Humid!");
   } else if (humidity < 30) {
     lcd.print("Dry Air");
   } else {
